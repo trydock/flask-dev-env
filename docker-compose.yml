@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  docker-lb:
+    image: nginx:alpine
+    container_name: local_docker_lb
+    volumes:
+      - "./config/docker-lb/conf/nginx:/etc/nginx"
+      - "./storage/docker-lb/data:/data"
+    links:
+      - "docker-pynode-01"
+    networks:
+      - local_docker_ext_net
+    ports:
+      - "80:80"
+      - "443:443"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  docker-pynode-01:
+    image: python:3.8.1-alpine3.11
+    container_name: local_python_node
+    volumes:
+      - "./storage/docker-pynode/data:/data"
+    entrypoint:
+      - /data/uwsgi.sh
+    networks:
+      - local_docker_ext_net
+    ports:
+      - "5000:5000"
+networks:
+  local_docker_ext_net:
+    driver: bridge

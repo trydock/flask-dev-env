@@ -1,0 +1,5 @@
+#gitignore
+__pycache__
+storage/docker-lb/data/htdocs/local_docker_lb/logs/
+storage/docker-pynode/data/htdocs/local_docker_python_node/venv/
+storage/docker-pynode/data/htdocs/local_docker_python_node/html/__pycache__
