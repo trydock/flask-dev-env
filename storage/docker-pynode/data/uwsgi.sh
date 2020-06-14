@@ -9,8 +9,10 @@ then
     apk add gcc g++ linux-headers
     # Creating the Python3 Virtual Environment.
     python -m venv /data/htdocs/local_docker_python_node/venv
-    # Installing the Python Flask and uWSGI modules
-    pip install Flask uWSGI
+    # Installing the Python uWSGI module
+    pip install uWSGI
+    # Installing the Python Flask module
+    pip install Flask
     echo "Done Setting up Python3 Virtual Environment."
 fi
 
