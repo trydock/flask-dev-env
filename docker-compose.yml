@@ -6,6 +6,8 @@ services:
     volumes:
       - "./config/docker-lb/conf/nginx:/etc/nginx"
       - "./storage/docker-lb/data:/data"
+    depends_on:
+      - "docker-pynode-01"
     links:
       - "docker-pynode-01"
     networks:
